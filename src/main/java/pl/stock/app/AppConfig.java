@@ -1,4 +1,4 @@
-package pl.futureprocessing.app;
+package pl.stock.app;
 
 
 import org.springframework.context.MessageSource;
@@ -24,10 +24,10 @@ import javax.validation.Validator;
 import java.util.Locale;
 
 @Configuration
-@ComponentScan("pl.futureprocessing")
+@ComponentScan("pl.stock")
 @EnableWebMvc
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "pl.futureprocessing.repository")
+@EnableJpaRepositories(basePackages = "pl.stock.repository")
 public class AppConfig implements WebMvcConfigurer {
 
     @Bean

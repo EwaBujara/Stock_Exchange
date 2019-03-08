@@ -1,7 +1,7 @@
-package pl.futureprocessing.repository;
+package pl.stock.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.futureprocessing.entity.User;
+import pl.stock.entity.User;
 
 import javax.transaction.Transactional;
 

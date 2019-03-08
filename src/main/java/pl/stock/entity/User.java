@@ -1,4 +1,4 @@
-package pl.futureprocessing.entity;
+package pl.stock.entity;
 
 import javax.persistence.*;
 

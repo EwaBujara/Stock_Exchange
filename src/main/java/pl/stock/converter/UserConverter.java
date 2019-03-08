@@ -1,9 +1,9 @@
-package pl.futureprocessing.converter;
+package pl.stock.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-import pl.futureprocessing.entity.User;
-import pl.futureprocessing.repository.UserRepository;
+import pl.stock.entity.User;
+import pl.stock.repository.UserRepository;
 
 public class UserConverter implements Converter<String, User> {
 

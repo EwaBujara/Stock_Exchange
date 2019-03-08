@@ -1,4 +1,4 @@
-package pl.futureprocessing.app;
+package pl.stock.app;
 
 
 import org.springframework.context.annotation.Bean;
@@ -8,10 +8,10 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import pl.futureprocessing.converter.UserConverter;
+import pl.stock.converter.UserConverter;
 
 @Configuration
-@ComponentScan("pl.futureprocessing")
+@ComponentScan("pl.stock")
 @EnableWebMvc
 @EnableTransactionManagement
 public class FormaterConfig implements WebMvcConfigurer {
