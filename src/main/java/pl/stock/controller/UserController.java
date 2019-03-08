@@ -40,4 +40,29 @@ public class UserController {
 
         return "redirect:"+request.getContextPath()+"/group/1";
     }
+
+    @GetMapping("/login")
+    public String login(Model model){
+        model.addAttribute("userLog", new User());
+
+        return "user/login";
+    }
+
+    @PostMapping("login")
+    public String login(@ModelAttribute("userLog") User userLog,
+                        BindingResult bindingResult,
+                        HttpServletRequest request,
+                        HttpSession session){
+
+//        userLogValidator.validate(userLog, bindingResult);
+
+        if (bindingResult.hasErrors()){
+            return "user/login";
+        }
+
+//        User currentUser = userRepository.findByUsername(userLog.getUsername());
+//        session.setAttribute("currentUser", currentUser);
+
+        return "redirect:"+request.getContextPath()+"/group/1";
+    }
 }
