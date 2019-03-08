@@ -14,7 +14,7 @@
         }
     </style>
     <div class="p-3 mb-2 bg-dark text-white">
-        <h3 class="text-center">Have fun with Language School!</h3>
+        <h3 class="text-center">Enjoy Stock Exchange!</h3>
     </div>
 </head>
 <body class="p-3 mb-2 bg-info text-white">
@@ -24,8 +24,8 @@
            modelAttribute="userLog"
            cssClass="container col-6" >
 
-    <form:input path="email" placeholder="Email" cssClass="form-input"/>
-    <form:errors path="email" cssClass="alert alert-danger" element="div"/>
+    <form:input path="username" placeholder="Enter Your Username" cssClass="form-input"/>
+    <form:errors path="username" cssClass="alert alert-danger" element="div"/>
 
     <form:password path="password" placeholder="Enter Your password" cssClass="form-input"/>
     <form:errors path="password" cssClass="alert alert-danger" element="div"/>
