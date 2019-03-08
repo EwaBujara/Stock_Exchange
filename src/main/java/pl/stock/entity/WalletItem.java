@@ -3,6 +3,7 @@ package pl.stock.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "SE_wallet_items")
 public class WalletItem {
 
     @Id
