@@ -61,4 +61,5 @@ public class Stock {
     public void setPrice(Double price) {
         this.price = price;
     }
+
 }

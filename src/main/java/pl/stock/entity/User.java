@@ -13,11 +13,13 @@ public class User {
 
     private String password;
 
+    @Transient
+    private String passwordConfirm;
+
+    private Double money;
     @OneToOne
     private Wallet wallet;
 
-    @Transient
-    private String passwordConfirm;
 
     public User() {
     }
@@ -60,5 +62,13 @@ public class User {
 
     public void setWallet(Wallet wallet) {
         this.wallet = wallet;
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
     }
 }

@@ -36,4 +36,12 @@ public class Wallet {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public List<WalletItem> getWalletItems() {
+        return walletItems;
+    }
+
+    public void setWalletItems(List<WalletItem> walletItems) {
+        this.walletItems = walletItems;
+    }
 }
