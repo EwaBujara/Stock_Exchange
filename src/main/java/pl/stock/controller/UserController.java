@@ -1,5 +1,6 @@
 package pl.stock.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,6 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.stock.entity.User;
+import pl.stock.repository.UserRepository;
+import pl.stock.service.UserService;
+import pl.stock.validator.NewUserValidator;
+import pl.stock.validator.UserLogValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +20,18 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    NewUserValidator newUserValidator;
+
+    @Autowired
+    UserLogValidator userLogValidator;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -29,13 +46,13 @@ public class UserController {
                                HttpServletRequest request,
                                HttpSession session) {
 
-//        newUserValidator.validate(userForm, bindingResult);
+        newUserValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "user/registration";
         }
 
-//        userService.save(userForm);
+        userService.save(userForm);
         session.setAttribute("currentUser", userForm);
 
         return "redirect:"+request.getContextPath()+"/group/1";
@@ -54,15 +71,15 @@ public class UserController {
                         HttpServletRequest request,
                         HttpSession session){
 
-//        userLogValidator.validate(userLog, bindingResult);
+        userLogValidator.validate(userLog, bindingResult);
 
         if (bindingResult.hasErrors()){
             return "user/login";
         }
 
-//        User currentUser = userRepository.findByUsername(userLog.getUsername());
-//        session.setAttribute("currentUser", currentUser);
+        User currentUser = userRepository.findByUsername(userLog.getUsername());
+        session.setAttribute("currentUser", currentUser);
 
-        return "redirect:"+request.getContextPath()+"/group/1";
+        return "redirect:"+request.getContextPath()+"/wallet/"+currentUser.getId();
     }
 }

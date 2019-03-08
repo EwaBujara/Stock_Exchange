@@ -3,6 +3,7 @@ package pl.stock.entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "SE_users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +12,9 @@ public class User {
     private String username;
 
     private String password;
+
+    @OneToOne
+    private Wallet wallet;
 
     @Transient
     private String passwordConfirm;
@@ -48,5 +52,13 @@ public class User {
 
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 }
