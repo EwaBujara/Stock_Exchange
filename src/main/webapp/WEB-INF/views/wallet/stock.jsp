@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <%@include file="/WEB-INF/views/wallet/header.jsp"%>
@@ -25,8 +26,17 @@
             <td>${stock.availableQuantity}</td>
         </tr>
     </table>
-    <a class="btn btn-info" href="http://localhost:8080/stock/withdraw">Withdraw</a>
-    <a class="btn btn-info" href="http://localhost:8080/stock/deposit">Deposit</a>
+    <h5>Buy
+<form:form method="post"
+                       action="${pageContext.request.contextPath}/user/registration"
+                       modelAttribute="walletItem"
+                       cssClass="container col-2" >
+    <form:input path="quantity" placeholder="${stock.availableQuantity}" cssClass="form-input"/> x ${stock.unit}
+    <%--<form:errors path="quantity" cssClass="alert alert-danger" element="div"/>--%>
+        <input type="submit" value="Send" class="btn btn-dark">
+</form:form>
+
+    </h5>
 </div>
 
 </body>
