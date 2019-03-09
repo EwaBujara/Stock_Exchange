@@ -18,8 +18,10 @@ public class WalletController {
     StockRepository stockRepository;
 
     @GetMapping("/wallet")
-    public String showWallet(){
+    public String showWallet(Model model){
 
+        model.addAttribute("stocks", stockRepository.findAll());
+        model.addAttribute("userStocks", stockRepository.findAll());
         return "wallet/wallet";
     }
 

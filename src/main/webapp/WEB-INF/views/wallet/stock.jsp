@@ -7,8 +7,8 @@
     <title>Stock Details</title>
 </head>
 <body>
-<div class="p-3 mb-2 bg-dark text-white text-center container col-8">
-    <table class="table text-white">
+<div class="p-3 mb-2 bg-white text-dark text-center container col-8">
+    <table class="table table-striped">
         <tr>
             <th>Name</th>
             <th>Code</th>
@@ -31,9 +31,9 @@
                        action="${pageContext.request.contextPath}/user/registration"
                        modelAttribute="walletItem"
                        cssClass="container col-2" >
-    <form:input path="quantity" placeholder="${stock.availableQuantity}" cssClass="form-input"/> x ${stock.unit}
+    <form:input path="quantity" placeholder= "${stock.availableQuantity}" cssClass="form-input"/> x ${stock.unit}
     <%--<form:errors path="quantity" cssClass="alert alert-danger" element="div"/>--%>
-        <input type="submit" value="Send" class="btn btn-dark">
+        <input type="submit" value="Buy!" class="btn btn-dark">
 </form:form>
 
     </h5>

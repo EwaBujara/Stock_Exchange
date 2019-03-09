@@ -23,7 +23,7 @@
 
 <form:form method="post"
            action="${pageContext.request.contextPath}/user/registration"
-           modelAttribute="walletItem"
+           modelAttribute="userForm"
            cssClass="container col-6" >
 
     <form:input path="username" placeholder="Username" cssClass="form-input"/>
