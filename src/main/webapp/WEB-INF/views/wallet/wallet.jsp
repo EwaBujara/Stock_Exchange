@@ -3,12 +3,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <%@include file="/WEB-INF/views/wallet/header.jsp"%>
+<style>
+#div1,#div2{
+    display: inline-block;
+}
+</style>
 <title>Your Wallet</title>
 </head>
 
 <body>
 
-<div class="p-3 mb-2 bg-white text-dark text-center container col-6">
+<div id="div1" class="p-3 mb-2 bg-white text-dark text-center container col-5">
     <table class="table table-striped">
         <tr>
             <th>
@@ -30,7 +35,7 @@
     </table>
 </div>
 
-<div class="p-3 mb-2 bg-white text-dark text-center container col-6">
+<div id="div2" class="p-3 mb-2 bg-white text-dark text-center container col-6">
     <table class="table table-striped">
         <tr>
             <th>My Wallet</th>

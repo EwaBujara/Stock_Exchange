@@ -26,17 +26,16 @@
             <td>${stock.availableQuantity}</td>
         </tr>
     </table>
-    <h5>Buy
 <form:form method="post"
                        action="${pageContext.request.contextPath}/user/registration"
                        modelAttribute="walletItem"
                        cssClass="container col-2" >
-    <form:input path="quantity" placeholder= "${stock.availableQuantity}" cssClass="form-input"/> x ${stock.unit}
+    ${stock.unit} x <form:input path="quantity" cssClass="form-input" id="inline2"/>
     <%--<form:errors path="quantity" cssClass="alert alert-danger" element="div"/>--%>
+    <p></p>
         <input type="submit" value="Buy!" class="btn btn-dark">
 </form:form>
 
-    </h5>
 </div>
 
 </body>
