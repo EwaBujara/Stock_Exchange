@@ -17,5 +17,17 @@ public class WalletServiceImpl implements WalletService{
 
         Wallet wallet = user.getWallet();
 
+        if(user.getMoney()<(quantity*stock.getUnit())*stock.getPrice()){
+
+        }else{
+
+        }
+
+    }
+
+    @Override
+    public void sellStock(User user, Stock stock, int quantity){
+
+
     }
 }
