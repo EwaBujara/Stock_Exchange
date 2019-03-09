@@ -55,7 +55,7 @@ public class UserController {
         userService.save(userForm);
         session.setAttribute("currentUser", userForm);
 
-        return "redirect:"+request.getContextPath()+"/group/1";
+        return "redirect:"+request.getContextPath()+"/stock/wallet";
     }
 
     @GetMapping("/login")
@@ -80,6 +80,6 @@ public class UserController {
         User currentUser = userRepository.findByUsername(userLog.getUsername());
         session.setAttribute("currentUser", currentUser);
 
-        return "redirect:"+request.getContextPath()+"/wallet/"+currentUser.getId();
+        return "redirect:"+request.getContextPath()+"/stock/wallet";
     }
 }

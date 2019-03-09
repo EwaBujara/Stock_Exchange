@@ -5,11 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/wallet")
+@RequestMapping("/stock")
 public class WalletController {
 
-    @GetMapping("/myWallet")
+    @GetMapping("/wallet")
     public String showWallet(){
+
         return "wallet/wallet";
+    }
+
+    @GetMapping("/account")
+    public String showAccount(){
+        return "wallet/account";
     }
 }

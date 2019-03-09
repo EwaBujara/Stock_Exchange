@@ -10,7 +10,8 @@
     <c:if test="${currentUser != null}">
 
         <p class="text-left">Welcome, ${currentUser.getUsername()}</p>
-        <a class="btn btn-info" href="http://localhost:8080/wallet/myWallet">Your Profile</a>
+        <a class="btn btn-info" href="http://localhost:8080/stock/wallet">Your Wallet</a>
+        <a class="btn btn-info" href="http://localhost:8080/stock/account">Your Account</a>
         <a class="btn btn-info" href="http://localhost:8080/home">Log OUT</a>
     </c:if>
 
