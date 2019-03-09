@@ -19,6 +19,10 @@ public class Stock {
 
     private Double price;
 
+    private int totalQuantity;
+
+    private int availableQuantity;
+
     public Stock() {
     }
 
@@ -62,4 +66,19 @@ public class Stock {
         this.price = price;
     }
 
+    public int getTotalQuantity() {
+        return totalQuantity;
+    }
+
+    public void setTotalQuantity(int totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public int getAvailableQuantity() {
+        return availableQuantity;
+    }
+
+    public void setAvailableQuantity(int availableQuantity) {
+        this.availableQuantity = availableQuantity;
+    }
 }
