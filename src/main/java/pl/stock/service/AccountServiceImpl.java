@@ -1,9 +1,11 @@
 package pl.stock.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pl.stock.entity.User;
 import pl.stock.repository.UserRepository;
 
+@Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired

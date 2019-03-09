@@ -1,5 +1,6 @@
 package pl.stock.service;
 
+import org.springframework.stereotype.Service;
 import pl.stock.entity.User;
 
 public interface AccountService {
