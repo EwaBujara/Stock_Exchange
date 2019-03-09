@@ -7,8 +7,11 @@
 </head>
 
 <body>
-<div>
-    You have: ${currentUser.getMoney()} PLN
+
+<div class="p-3 mb-2 bg-dark text-white text-center container col-6">
+    <h4>Your Balance: ${currentUser.getMoney()} PLN</h4>
+    <a class="btn btn-info" href="http://localhost:8080/stock/wallet">Withdraw</a>
+    <a class="btn btn-info" href="http://localhost:8080/stock/wallet">Deposit</a>
 </div>
 </body>
 </html>
