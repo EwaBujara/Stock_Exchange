@@ -12,7 +12,7 @@ import pl.stock.converter.StockConverter;
 import pl.stock.converter.UserConverter;
 import pl.stock.converter.WalletConverter;
 import pl.stock.converter.WalletItemConverter;
-import pl.stock.entity.WalletItem;
+
 
 @Configuration
 @ComponentScan("pl.stock")
