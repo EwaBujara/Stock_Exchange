@@ -4,6 +4,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <%@include file="/WEB-INF/views/wallet/header.jsp"%>
+<style>
+    input{
+        display: block;
+        margin:15px 0;
+        width: 100%;
+    }
+</style>
     <title>Stock Details</title>
 </head>
 <body>
@@ -26,17 +33,15 @@
             <td>${stock.availableQuantity}</td>
         </tr>
     </table>
-<form:form method="post"
-                       action="${pageContext.request.contextPath}/user/registration"
-                       modelAttribute="walletItem"
-                       cssClass="container col-2" >
-    ${stock.unit} x <form:input path="quantity" cssClass="form-input" id="inline2"/>
-    <%--<form:errors path="quantity" cssClass="alert alert-danger" element="div"/>--%>
-    <p></p>
-        <input type="submit" value="Buy!" class="btn btn-dark">
-</form:form>
-
 </div>
+<div class="p-3 mb-2 bg-dark text-white text-center container col-8">
+    <form method="post" action="${pageContext.request.contextPath}/SE/buy/${stock.id}" class="container col-2" >
+
+    ${stock.unit} x <input name="quantity" placeholder="Enter Integer" class="form-input"/>
+        <input type="submit" value="Buy!" class="btn btn-info">
+    </form>
+</div>
+
 
 </body>
 </html>
