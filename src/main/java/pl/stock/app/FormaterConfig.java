@@ -8,6 +8,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import pl.stock.converter.StockConverter;
 import pl.stock.converter.UserConverter;
 
 @Configuration
@@ -19,9 +20,13 @@ public class FormaterConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(getUserConverter());
+        registry.addConverter(getStockConverter());
     }
 
     @Bean
     public UserConverter getUserConverter(){return  new UserConverter();}
+
+    @Bean
+    public StockConverter getStockConverter(){return new StockConverter();}
 }
 
