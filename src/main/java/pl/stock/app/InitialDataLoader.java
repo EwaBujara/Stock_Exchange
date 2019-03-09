@@ -26,8 +26,8 @@ public class InitialDataLoader implements
 
         if (alreadySetup)
             return;
-//        Privilege adminPrivilege = createPrivilegeIfNotFound("ADMIN_PRIVILEGE");
-
+        Stock fpStock= createStockIfNotFound("Future Processing","FP", 1, 5.1354, 100000);
+        Stock fplStock = createStockIfNotFound("FP Lab", "FPL", 100, 3.6434, 1000000);
         alreadySetup = true;
     }
 
