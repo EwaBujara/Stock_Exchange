@@ -30,4 +30,16 @@ public class AccountController {
         accountService.deposit(deposit, currentUser);
         return "user/account";
     }
+
+    @GetMapping("/withdraw")
+    public String withdrawMoney(){
+        return "user/withdraw";
+    }
+
+    @PostMapping("/withdraw")
+    public String withdrawMoney(HttpSession session, Double withdraw){
+        User currentUser = (User) session.getAttribute("currentUser");
+        accountService.withdraw(withdraw, currentUser);
+        return "user/account";
+    }
 }

@@ -21,7 +21,7 @@
 
 <form method="post"
            action="${pageContext.request.contextPath}/account/deposit"
-           class="container col-6" >
+           class="container col-4" >
 
     <input name="deposit" placeholder="Deposit" class="form-input"/>
     <input type="submit" value="Enter" class="btn btn-dark">
