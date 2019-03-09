@@ -17,6 +17,7 @@ public class User {
     private String passwordConfirm;
 
     private Double money;
+
     @OneToOne
     private Wallet wallet;
 
