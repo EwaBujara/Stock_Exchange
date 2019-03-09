@@ -82,4 +82,9 @@ public class UserController {
 
         return "redirect:"+request.getContextPath()+"/stock/wallet";
     }
+
+    @GetMapping("/account")
+    public String showAccount(){
+        return "user/account";
+    }
 }

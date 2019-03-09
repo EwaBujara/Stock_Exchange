@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.stock.repository.StockRepository;
 
 @Controller
-@RequestMapping("/stock")
+@RequestMapping("/SE")
 public class WalletController {
 
     @Autowired
@@ -21,10 +21,6 @@ public class WalletController {
         return "wallet/wallet";
     }
 
-    @GetMapping("/account")
-    public String showAccount(){
-        return "wallet/account";
-    }
 
     @GetMapping("/stock/{stockId}")
     public String showDetails(@PathVariable Long stockId, Model model){
