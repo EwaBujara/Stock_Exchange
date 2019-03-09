@@ -6,6 +6,7 @@ import pl.stock.entity.Stock;
 import pl.stock.entity.User;
 import pl.stock.entity.Wallet;
 import pl.stock.entity.WalletItem;
+import pl.stock.repository.StockRepository;
 import pl.stock.repository.WalletItemRepository;
 import pl.stock.repository.WalletRepository;
 
@@ -20,6 +21,9 @@ public class WalletServiceImpl implements WalletService{
     @Autowired
     WalletItemRepository walletItemRepository;
 
+    @Autowired
+    StockRepository stockRepository;
+
     @Override
     public void buyStock(User user, Stock stock, int quantity) {
 
@@ -33,6 +37,8 @@ public class WalletServiceImpl implements WalletService{
             WalletItem walletItem = new WalletItem();
             walletItem.setStock(stock);
             walletItem.setQuantity(stock.getUnit()*quantity);
+            stock.setAvailableQuantity(stock.getAvailableQuantity()-quantity);
+            stockRepository.save(stock);
             walletItemRepository.save(walletItem);
             walletItems.add(walletItem);
             wallet.setWalletItems(walletItems);
