@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import pl.stock.converter.StockConverter;
 import pl.stock.converter.UserConverter;
+import pl.stock.converter.WalletConverter;
 
 @Configuration
 @ComponentScan("pl.stock")
@@ -21,6 +22,7 @@ public class FormaterConfig implements WebMvcConfigurer {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(getUserConverter());
         registry.addConverter(getStockConverter());
+        registry.addConverter(getWalletonverte());
     }
 
     @Bean
@@ -28,5 +30,8 @@ public class FormaterConfig implements WebMvcConfigurer {
 
     @Bean
     public StockConverter getStockConverter(){return new StockConverter();}
+
+    @Bean
+    public WalletConverter getWalletonverte(){return new WalletConverter();}
 }
 
