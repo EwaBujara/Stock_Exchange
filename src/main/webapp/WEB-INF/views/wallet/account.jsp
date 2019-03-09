@@ -7,6 +7,8 @@
 </head>
 
 <body>
-
+<div>
+    You have: ${currentUser.getMoney()} PLN
+</div>
 </body>
 </html>
