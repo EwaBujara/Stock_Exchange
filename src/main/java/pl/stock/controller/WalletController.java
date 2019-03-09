@@ -5,10 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.stock.entity.Stock;
 import pl.stock.entity.WalletItem;
 import pl.stock.repository.StockRepository;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/SE")
@@ -30,9 +33,15 @@ public class WalletController {
     public String showDetails(@PathVariable Long stockId, Model model){
         Stock stock = stockRepository.findOne(stockId);
         model.addAttribute("stock", stock);
-        WalletItem walletItem = new WalletItem();
-        walletItem.setStock(stock);
-        model.addAttribute("walletItem",walletItem);
+//        WalletItem walletItem = new WalletItem();
+//        walletItem.setStock(stock);
+//        model.addAttribute("walletItem",walletItem);
         return "wallet/stock";
+    }
+
+    @PostMapping("stock/{stockId}")
+    public String buyStock(@PathVariable Long stockId, HttpSession session){
+
+        return "wallet/wallet";
     }
 }
