@@ -1,9 +1,13 @@
 package pl.stock.app;
 
+import netscape.security.Privilege;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import pl.stock.entity.Stock;
+import pl.stock.repository.StockRepository;
+
 import javax.transaction.Transactional;
 
 
@@ -13,6 +17,8 @@ public class InitialDataLoader implements
 
     boolean alreadySetup = false;
 
+    @Autowired
+    StockRepository stockRepository;
 
     @Override
     @Transactional
@@ -21,37 +27,24 @@ public class InitialDataLoader implements
         if (alreadySetup)
             return;
 //        Privilege adminPrivilege = createPrivilegeIfNotFound("ADMIN_PRIVILEGE");
-//        Privilege teacherPrivilege = createPrivilegeIfNotFound("TEACHER_PRIVILEGE");
-//        Privilege studentPrivilege = createPrivilegeIfNotFound("STUDENT_PRIVILEGE");
-//
-//        Role adminRole = createRoleIfNotFound("Admin", Arrays.asList(adminPrivilege));
-//        Role teacherRole = createRoleIfNotFound("Teacher", Arrays.asList(teacherPrivilege));
-//        Role userRole = createRoleIfNotFound("User", Arrays.asList(studentPrivilege));
-//        Group startGroup = createGroupIfNotFound("Bucket");
-//
-//        User user = new User();
-//        user.setUsername("Admin");
-//        user.setPassword("Password");
-//        user.setEmail("admin@admin.com");
-//        user.setRoles(Arrays.asList(adminRole, teacherRole, userRole));
-//        user.setEnabled(true);
-//        user.setGroups(Arrays.asList(startGroup));
-//        userService.save(user);
 
         alreadySetup = true;
     }
 
     @Transactional
-    public Stock createStockIfNotFound(String name) {
+    public Stock createStockIfNotFound(String name, String code, int unit, Double price, int totalQuantity) {
 
-//        Privilege privilege = privilegeRepository.findByName(name);
-//        if (privilege == null) {
-//            privilege = new Privilege();
-//            privilege.setName(name);
-//            privilegeRepository.save(privilege);
-//        }
-//        return privilege;
-        Stock stock = new Stock();
+        Stock stock = stockRepository.findByName(name);
+        if (stock == null) {
+            stock = new Stock();
+            stock.setName(name);
+            stock.setCode(code);
+            stock.setUnit(unit);
+            stock.setPrice(price);
+            stock.setTotalQuantity(totalQuantity);
+            stock.setAvailableQuantity(totalQuantity);
+            stockRepository.save(stock);
+        }
         return  stock;
     }
 
