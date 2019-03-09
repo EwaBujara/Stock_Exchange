@@ -5,15 +5,13 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<title>Stock Exchange</title>
+<%--<title>Stock Exchange</title>--%>
 <div class="p-3 mb-2 bg-dark text-white">
     <c:if test="${currentUser != null}">
 
-        <p class="text-right">Welcome, ${currentUser.getUsername()}</p>
-        <p></p>
-        <a class="btn btn-info float-right" href="http://localhost:8080/wallet/account/"${currentUser.getId()}>Your Profile</a>
-        <p></p>
-        <a class="btn btn-info float-right" href="http://localhost:8080/home">Log OUT</a>
+        <p class="text-left">Welcome, ${currentUser.getUsername()}</p>
+        <a class="btn btn-info" href="http://localhost:8080/wallet/myWallet">Your Profile</a>
+        <a class="btn btn-info" href="http://localhost:8080/home">Log OUT</a>
     </c:if>
 
     <c:if test="${currentUser == null}">
