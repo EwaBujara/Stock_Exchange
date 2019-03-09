@@ -19,14 +19,12 @@
 </head>
 <body class="p-3 mb-2 bg-info text-white">
 
-<form:form method="post"
-           action="${pageContext.request.contextPath}/user/login"
-           modelAttribute="deposit"
-           cssClass="container col-6" >
+<form method="post"
+           action="${pageContext.request.contextPath}/account/deposit"
+           class="container col-6" >
 
-    <form:input path="username" placeholder="Deposit" cssClass="form-input"/>
-    <%--<form:errors path="username" cssClass="alert alert-danger" element="div"/>--%>
+    <input name="deposit" placeholder="Deposit" class="form-input"/>
     <input type="submit" value="Enter" class="btn btn-dark">
-</form:form>
+</form>
 </body>
 </html>

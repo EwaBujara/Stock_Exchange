@@ -24,7 +24,14 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void deposit(Double deposit, User user) {
-        user.setMoney(user.getMoney()+deposit);
-        userRepository.save(user);
+        if(user.getMoney()==null){
+            user.setMoney(deposit);
+            userRepository.save(user);
+        }
+        else {
+
+            user.setMoney(user.getMoney()+deposit);
+            userRepository.save(user);
+        }
     }
 }

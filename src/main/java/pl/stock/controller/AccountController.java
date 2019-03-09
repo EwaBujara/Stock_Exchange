@@ -2,6 +2,7 @@ package pl.stock.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public class AccountController {
     }
 
     @PostMapping("/deposit")
-    public String depositMoney(@ModelAttribute("deposit") Double deposit, HttpSession session){
+    public String depositMoney(HttpSession session, Double deposit){
         User currentUser = (User) session.getAttribute("currentUser");
         accountService.deposit(deposit, currentUser);
         return "user/account";
