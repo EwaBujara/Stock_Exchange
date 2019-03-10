@@ -14,7 +14,7 @@
         }
     </style>
     <div class="p-3 mb-2 bg-dark text-white">
-        <h3 class="text-center">Enjoy Stock Exchange!</h3>
+        <h3 class="text-center">Welcome to Stock Exchange!</h3>
     </div>
 </head>
 <body class="p-3 mb-2 bg-info text-white">
