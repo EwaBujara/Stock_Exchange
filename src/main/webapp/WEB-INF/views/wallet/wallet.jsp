@@ -49,10 +49,10 @@
         </tr>
         <c:forEach items="${userStocks}" var="userStock">
             <tr>
-                <td>${userStock.code}</td>
-                <td>${userStock.price}</td>
-                <td>${userStock.code}</td>
-                <td>${userStock.code}</td>
+                <td>${userStock.stock.code}</td>
+                <td>${userStock.stock.price}</td>
+                <td>${userStock.quantity}</td>
+                <td>${userStock.stock.price*userStock.quantity}</td>
                 <td><a class="btn btn-dark" href="http://localhost:8080/SE/stock/${userStock.id}">Sell</a></td>
             </tr>
 

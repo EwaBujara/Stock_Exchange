@@ -38,7 +38,7 @@
     <form method="post" action="${pageContext.request.contextPath}/SE/stock/${stock.id}" class="container col-2" >
 
     ${stock.unit} x <input name="quantity" placeholder="Enter Integer" class="form-input"/>
-        <input type="submit" value="Buy!" class="btn btn-info">
+        <input type="submit" value="Confirm!" class="btn btn-info">
     </form>
 </div>
 
