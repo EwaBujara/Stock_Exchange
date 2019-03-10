@@ -28,6 +28,10 @@ public class InitialDataLoader implements
             return;
         Stock fpStock= createStockIfNotFound("Future Processing","FP", 1, 5.1354, 100000);
         Stock fplStock = createStockIfNotFound("FP Lab", "FPL", 100, 3.6434, 1000000);
+        Stock pgbStock = createStockIfNotFound("Progress Bar", "PGB", 1, 4.0666, 1000000);
+        Stock fpcStock = createStockIfNotFound("FP Coin", "FPC", 50, 16.3821, 1000000);
+        Stock fpaStock = createStockIfNotFound("FP Adventure", "FPA", 50, 11.7366, 1000000);
+        Stock dl24Stock = createStockIfNotFound("Deadline 24", "DL24", 100, 5.2414, 1000000);
         alreadySetup = true;
     }
 

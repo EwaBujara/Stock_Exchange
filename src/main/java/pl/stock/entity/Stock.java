@@ -1,6 +1,5 @@
 package pl.stock.entity;
 
-
 import javax.persistence.*;
 
 @Entity
