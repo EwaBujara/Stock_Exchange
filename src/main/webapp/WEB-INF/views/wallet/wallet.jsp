@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <th>Company</th>
-            <th>Price</th>
+            <th>Price [PLN]</th>
             <th>Actions</th>
         </tr>
         <c:forEach items="${stocks}" var="stock">
@@ -42,9 +42,9 @@
         </tr>
         <tr>
             <th>Company</th>
-            <th>Unit price</th>
+            <th>Unit price [PLN]</th>
             <th>Amount</th>
-            <th>Value</th>
+            <th>Value [PLN]</th>
             <th>Action</th>
         </tr>
         <c:forEach items="${userStocks}" var="userStock">
@@ -60,7 +60,7 @@
 
         <tr>
             <td>
-                <h5>Available money: ${currentUser.money}</h5>
+                <h5>Available money: ${currentUser.money} PLN</h5>
             </td>
         </tr>
     </table>
