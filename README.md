@@ -21,7 +21,8 @@ Technologies:
 * Developed data validation
 * `User` personal data edition
 
-=================
+
+
 This application is complete Maven-Project. Contains all necessary files.
   
 Steps needed to launch application:
