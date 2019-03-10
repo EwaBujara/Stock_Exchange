@@ -3,6 +3,8 @@
 
 Application imitating action of *Stock Exchange*
 
+(Minimally Viable Product)
+
 `User` can:
 * create an account
 * define his `Balance` using `deposit` and `withdraw` 
