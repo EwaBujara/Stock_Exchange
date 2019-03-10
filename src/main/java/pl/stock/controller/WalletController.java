@@ -12,6 +12,7 @@ import pl.stock.entity.User;
 import pl.stock.repository.StockRepository;
 import pl.stock.service.WalletService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -37,18 +38,18 @@ public class WalletController {
     public String showDetails(@PathVariable Long stockId, Model model){
         Stock stock = stockRepository.findOne(stockId);
         model.addAttribute("stock", stock);
-//        WalletItem walletItem = new WalletItem();
-//        walletItem.setStock(stock);
-//        model.addAttribute("walletItem",walletItem);
         return "wallet/stock";
     }
 
     @PostMapping("stock/{stockId}")
-    public String buyStock(@PathVariable Long stockId, HttpSession session, int quantity){
+    public String buyStock(@PathVariable Long stockId,
+                           HttpSession session,
+                           int quantity,
+                           HttpServletRequest request){
         User currentUser = (User) session.getAttribute("currentUser");
         Stock stock = stockRepository.findOne(stockId);
         walletService.buyStock(currentUser, stock, quantity);
 
-        return "wallet/wallet";
+        return "redirect:"+request.getContextPath()+"/SE/wallet";
     }
 }

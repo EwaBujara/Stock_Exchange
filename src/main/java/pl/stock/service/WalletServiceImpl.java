@@ -7,6 +7,7 @@ import pl.stock.entity.User;
 import pl.stock.entity.Wallet;
 import pl.stock.entity.WalletItem;
 import pl.stock.repository.StockRepository;
+import pl.stock.repository.UserRepository;
 import pl.stock.repository.WalletItemRepository;
 import pl.stock.repository.WalletRepository;
 
@@ -24,6 +25,9 @@ public class WalletServiceImpl implements WalletService{
     @Autowired
     StockRepository stockRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @Override
     public void buyStock(User user, Stock stock, int quantity) {
 
@@ -34,17 +38,24 @@ public class WalletServiceImpl implements WalletService{
         if(containsStock(walletItems, stock)){
             WalletItem walletItem = walletItemRepository.findByStock(stock);
             walletItem.setQuantity(walletItem.getQuantity()+(quantity*stock.getUnit()));
+            walletItemRepository.save(walletItem);
 
-        } else {
+        } else if(quantity*stock.getUnit()*stock.getPrice()<user.getMoney() && quantity*stock.getUnit()<stock.getAvailableQuantity()){
             WalletItem walletItem = new WalletItem();
             walletItem.setStock(stock);
             walletItem.setQuantity(stock.getUnit()*quantity);
-            stock.setAvailableQuantity(stock.getAvailableQuantity()-quantity);
-            stockRepository.save(stock);
+            walletItem.setWallet(wallet);
             walletItemRepository.save(walletItem);
-            walletItems.add(walletItem);
-            wallet.setWalletItems(walletItems);
-            walletRepository.save(wallet);
+
+            stock.setAvailableQuantity(stock.getAvailableQuantity()-quantity*stock.getUnit());
+            stockRepository.save(stock);
+
+            user.setMoney(user.getMoney()-quantity*stock.getUnit()*stock.getPrice());
+            userRepository.save(user);
+
+//            walletItems.add(walletItem);
+//            wallet.setWalletItems(walletItems);
+//            walletRepository.save(wallet);
         }
 
     }

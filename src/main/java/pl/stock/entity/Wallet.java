@@ -15,7 +15,7 @@ public class Wallet {
     @OneToOne(mappedBy = "wallet")
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "wallet", fetch = FetchType.EAGER)
     private List<WalletItem> walletItems = new ArrayList<>();
 
 

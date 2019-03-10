@@ -57,19 +57,19 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public Wallet getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
-
     public Double getMoney() {
         return money;
     }
 
     public void setMoney(Double money) {
         this.money = money;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 }
