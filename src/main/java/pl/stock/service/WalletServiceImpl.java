@@ -35,7 +35,7 @@ public class WalletServiceImpl implements WalletService{
 
         WalletItem walletItem = walletItemRepository.findByWalletAndStock(wallet, stock);
 
-        if(quantity*stock.getUnit()*stock.getPrice()<user.getMoney() && quantity*stock.getUnit()<stock.getAvailableQuantity()){
+        if(quantity*stock.getUnit()*stock.getPrice()<=user.getMoney() && quantity*stock.getUnit()<=stock.getAvailableQuantity()){
 
             if(walletItem!=null){
                 walletItem.setQuantity(walletItem.getQuantity()+(quantity*stock.getUnit()));
