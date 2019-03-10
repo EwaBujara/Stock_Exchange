@@ -15,7 +15,9 @@
     </style>
 </head>
 <body class="p-3 mb-2 bg-white text-dark">
-
+<div class="p-3 mb-2 bg-dark text-white text-center container col-6">
+    <h4>Your Balance: ${currentUser.getMoney()} PLN</h4>
+</div>
 <form method="post"
            action="${pageContext.request.contextPath}/account/deposit"
            class="container col-4" >
