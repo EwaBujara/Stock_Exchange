@@ -15,8 +15,8 @@ Technologies:
 * JSP
 
 ===== TO DO: ====
-* Getting `Stock` current course (HTTP, JSON) !!!
+* Getting `Stock` current course from external server (HTTP, JSON) 
 * Developed data validation
 * `User` personal data edition
-=================
+
 
