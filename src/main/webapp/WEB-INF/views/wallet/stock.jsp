@@ -20,7 +20,7 @@
             <th>Name</th>
             <th>Code</th>
             <th>Unit</th>
-            <th>Price</th>
+            <th>Price [PLN]</th>
             <th>Total Quantity</th>
             <th>Available Quantity</th>
         </tr>
@@ -35,9 +35,21 @@
     </table>
 </div>
 <div class="p-3 mb-2 bg-dark text-white text-center container col-8">
+    <h5>You have:
+        <c:if test="${walletItem.quantity != null}">
+            ${walletItem.quantity}
+        </c:if>
+
+        <c:if test="${walletItem.quantity == null}">
+            0
+        </c:if>
+        ${stock.code} stocks</h5>
+    <h5>
+        Your balance: ${currentUser.money} PLN
+    </h5>
     <form method="post" action="${pageContext.request.contextPath}/SE/${action}/${stock.id}" class="container col-2" >
 
-    ${stock.unit} x <input name="quantity" placeholder="Enter Integer" class="form-input"/>
+    ${submit}: ${stock.unit} x <input name="quantity" placeholder="Enter Integer" class="form-input"/>
         <input type="submit" value="${submit}" class="btn btn-info">
     </form>
 </div>

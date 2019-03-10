@@ -48,6 +48,7 @@
             <th>Action</th>
         </tr>
         <c:forEach items="${userStocks}" var="userStock">
+            <c:if test="${userStock.quantity>0}">
             <tr>
                 <td>${userStock.stock.code}</td>
                 <td>${userStock.stock.price}</td>
@@ -55,7 +56,7 @@
                 <td>${userStock.stock.price*userStock.quantity}</td>
                 <td><a class="btn btn-dark" href="http://localhost:8080/SE/sellStock/${userStock.stock.id}">Sell</a></td>
             </tr>
-
+            </c:if>
         </c:forEach>
 
         <tr>
