@@ -33,30 +33,30 @@ public class WalletServiceImpl implements WalletService{
 
         Wallet wallet = walletRepository.findOne(user.getWallet().getId());
 
-        List<WalletItem> walletItems= wallet.getWalletItems();
+        WalletItem walletItem = walletItemRepository.findByWalletAndStock(wallet, stock);
 
-        if(containsStock(walletItems, stock)){
-            WalletItem walletItem = walletItemRepository.findByStock(stock);
-            walletItem.setQuantity(walletItem.getQuantity()+(quantity*stock.getUnit()));
-            walletItemRepository.save(walletItem);
+        if(quantity*stock.getUnit()*stock.getPrice()<user.getMoney() && quantity*stock.getUnit()<stock.getAvailableQuantity()){
 
-        } else if(quantity*stock.getUnit()*stock.getPrice()<user.getMoney() && quantity*stock.getUnit()<stock.getAvailableQuantity()){
-            WalletItem walletItem = new WalletItem();
-            walletItem.setStock(stock);
-            walletItem.setQuantity(stock.getUnit()*quantity);
-            walletItem.setWallet(wallet);
-            walletItemRepository.save(walletItem);
+            if(walletItem!=null){
+                walletItem.setQuantity(walletItem.getQuantity()+(quantity*stock.getUnit()));
+                walletItemRepository.save(walletItem);
 
-            stock.setAvailableQuantity(stock.getAvailableQuantity()-quantity*stock.getUnit());
-            stockRepository.save(stock);
+            } else{
+                walletItem = new WalletItem();
+                walletItem.setStock(stock);
+                walletItem.setQuantity(stock.getUnit()*quantity);
+                walletItem.setWallet(wallet);
+                walletItemRepository.save(walletItem);
 
-            user.setMoney(user.getMoney()-quantity*stock.getUnit()*stock.getPrice());
-            userRepository.save(user);
+                stock.setAvailableQuantity(stock.getAvailableQuantity()-quantity*stock.getUnit());
+                stockRepository.save(stock);
 
-//            walletItems.add(walletItem);
-//            wallet.setWalletItems(walletItems);
-//            walletRepository.save(wallet);
+                user.setMoney(user.getMoney()-quantity*stock.getUnit()*stock.getPrice());
+                userRepository.save(user);
+
+            }
         }
+
 
     }
 
@@ -65,7 +65,7 @@ public class WalletServiceImpl implements WalletService{
 
     }
 
-    public boolean containsStock(List<WalletItem> list, Stock stock){
-        return list.stream().map(WalletItem::getStock).filter(stock::equals).findFirst().isPresent();
-    }
+//    public boolean containsStock(List<WalletItem> list, Stock stock){
+//        return list.stream().map(WalletItem::getStock).anyMatch(stock::equals);
+//    }
 }
