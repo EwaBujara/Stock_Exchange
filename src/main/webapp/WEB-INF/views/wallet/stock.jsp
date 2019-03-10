@@ -35,7 +35,7 @@
     </table>
 </div>
 <div class="p-3 mb-2 bg-dark text-white text-center container col-8">
-    <form method="post" action="${pageContext.request.contextPath}/SE/buy/${stock.id}" class="container col-2" >
+    <form method="post" action="${pageContext.request.contextPath}/SE/stock/${stock.id}" class="container col-2" >
 
     ${stock.unit} x <input name="quantity" placeholder="Enter Integer" class="form-input"/>
         <input type="submit" value="Buy!" class="btn btn-info">

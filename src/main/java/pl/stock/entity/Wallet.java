@@ -1,6 +1,7 @@
 package pl.stock.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,8 +15,8 @@ public class Wallet {
     @OneToOne(mappedBy = "wallet")
     private User user;
 
-    @ManyToMany
-    private List<WalletItem> walletItems;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<WalletItem> walletItems = new ArrayList<>();
 
 
     public Wallet() {

@@ -27,12 +27,14 @@ public class WalletServiceImpl implements WalletService{
     @Override
     public void buyStock(User user, Stock stock, int quantity) {
 
-        Wallet wallet = walletRepository.findByUser(user);
+        Wallet wallet = walletRepository.findOne(user.getWallet().getId());
+
         List<WalletItem> walletItems= wallet.getWalletItems();
 
         if(containsStock(walletItems, stock)){
             WalletItem walletItem = walletItemRepository.findByStock(stock);
             walletItem.setQuantity(walletItem.getQuantity()+(quantity*stock.getUnit()));
+
         } else {
             WalletItem walletItem = new WalletItem();
             walletItem.setStock(stock);
@@ -42,6 +44,7 @@ public class WalletServiceImpl implements WalletService{
             walletItemRepository.save(walletItem);
             walletItems.add(walletItem);
             wallet.setWalletItems(walletItems);
+            walletRepository.save(wallet);
         }
 
     }

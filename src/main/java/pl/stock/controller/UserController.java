@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.stock.entity.User;
+import pl.stock.entity.Wallet;
 import pl.stock.repository.UserRepository;
+import pl.stock.repository.WalletRepository;
 import pl.stock.service.UserService;
 import pl.stock.validator.NewUserValidator;
 import pl.stock.validator.UserLogValidator;
@@ -33,6 +35,10 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    WalletRepository walletRepository;
+
+
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
@@ -52,6 +58,10 @@ public class UserController {
             return "user/registration";
         }
 
+        Wallet wallet = new Wallet();
+        walletRepository.save(wallet);
+
+        userForm.setWallet(wallet);
         userService.save(userForm);
         session.setAttribute("currentUser", userForm);
 

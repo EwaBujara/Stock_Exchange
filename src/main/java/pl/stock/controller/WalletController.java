@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.stock.entity.Stock;
-import pl.stock.entity.WalletItem;
+import pl.stock.entity.User;
 import pl.stock.repository.StockRepository;
+import pl.stock.service.WalletService;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +20,9 @@ public class WalletController {
 
     @Autowired
     StockRepository stockRepository;
+
+    @Autowired
+    WalletService walletService;
 
     @GetMapping("/wallet")
     public String showWallet(Model model){
@@ -40,7 +44,10 @@ public class WalletController {
     }
 
     @PostMapping("stock/{stockId}")
-    public String buyStock(@PathVariable Long stockId, HttpSession session){
+    public String buyStock(@PathVariable Long stockId, HttpSession session, int quantity){
+        User currentUser = (User) session.getAttribute("currentUser");
+        Stock stock = stockRepository.findOne(stockId);
+        walletService.buyStock(currentUser, stock, quantity);
 
         return "wallet/wallet";
     }
