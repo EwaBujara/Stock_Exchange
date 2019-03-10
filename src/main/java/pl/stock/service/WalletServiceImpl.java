@@ -39,22 +39,23 @@ public class WalletServiceImpl implements WalletService{
 
             if(walletItem!=null){
                 walletItem.setQuantity(walletItem.getQuantity()+(quantity*stock.getUnit()));
-                walletItemRepository.save(walletItem);
+
 
             } else{
                 walletItem = new WalletItem();
                 walletItem.setStock(stock);
                 walletItem.setQuantity(stock.getUnit()*quantity);
                 walletItem.setWallet(wallet);
-                walletItemRepository.save(walletItem);
-
-                stock.setAvailableQuantity(stock.getAvailableQuantity()-quantity*stock.getUnit());
-                stockRepository.save(stock);
-
-                user.setMoney(user.getMoney()-quantity*stock.getUnit()*stock.getPrice());
-                userRepository.save(user);
 
             }
+
+            walletItemRepository.save(walletItem);
+
+            stock.setAvailableQuantity(stock.getAvailableQuantity() - quantity*stock.getUnit());
+            stockRepository.save(stock);
+
+            user.setMoney(user.getMoney() - quantity*stock.getUnit()*stock.getPrice());
+            userRepository.save(user);
         }
 
 
