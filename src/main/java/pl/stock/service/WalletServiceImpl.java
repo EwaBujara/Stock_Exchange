@@ -62,10 +62,21 @@ public class WalletServiceImpl implements WalletService{
 
     @Override
     public void sellStock(User user, Stock stock, int quantity){
+        Wallet wallet = walletRepository.findOne(user.getWallet().getId());
 
+        WalletItem walletItem = walletItemRepository.findByWalletAndStock(wallet, stock);
+        if(walletItem.getQuantity() >= stock.getUnit()*quantity){
+
+            walletItem.setQuantity(walletItem.getQuantity()-(quantity*stock.getUnit()));
+            walletItemRepository.save(walletItem);
+
+            stock.setAvailableQuantity(stock.getAvailableQuantity()+quantity*stock.getUnit());
+            stockRepository.save(stock);
+
+            user.setMoney(user.getMoney()+quantity*stock.getUnit()*stock.getPrice());
+            userRepository.save(user);
+
+        }
     }
 
-//    public boolean containsStock(List<WalletItem> list, Stock stock){
-//        return list.stream().map(WalletItem::getStock).anyMatch(stock::equals);
-//    }
 }

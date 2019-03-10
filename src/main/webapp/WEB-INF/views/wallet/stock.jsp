@@ -35,10 +35,10 @@
     </table>
 </div>
 <div class="p-3 mb-2 bg-dark text-white text-center container col-8">
-    <form method="post" action="${pageContext.request.contextPath}/SE/stock/${stock.id}" class="container col-2" >
+    <form method="post" action="${pageContext.request.contextPath}/SE/${action}/${stock.id}" class="container col-2" >
 
     ${stock.unit} x <input name="quantity" placeholder="Enter Integer" class="form-input"/>
-        <input type="submit" value="${action}" class="btn btn-info">
+        <input type="submit" value="${submit}" class="btn btn-info">
     </form>
 </div>
 

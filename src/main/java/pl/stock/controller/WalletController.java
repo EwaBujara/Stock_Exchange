@@ -41,9 +41,11 @@ public class WalletController {
     @GetMapping("/buyStock/{stockId}")
     public String buyStock(@PathVariable Long stockId, Model model){
         Stock stock = stockRepository.findOne(stockId);
-        String action = "Buy!";
+        String submit = "Buy!";
+        String action = "buyStock";
         model.addAttribute("stock", stock);
         model.addAttribute("action", action);
+        model.addAttribute("submit", submit);
         return "wallet/stock";
     }
 
@@ -62,8 +64,10 @@ public class WalletController {
     @GetMapping("/sellStock/{stockId}")
     public String sellStock(@PathVariable Long stockId, Model model){
         Stock stock = stockRepository.findOne(stockId);
-        String action = "Sell!";
+        String action = "sellStock";
+        String submit = "Sell!";
         model.addAttribute("stock", stock);
+        model.addAttribute("submit", submit);
         model.addAttribute("action", action);
         return "wallet/stock";
     }
