@@ -1,6 +1,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <%@include file="/WEB-INF/views/wallet/header.jsp"%>
@@ -17,6 +18,8 @@
 <body class="p-3 mb-2 bg-white text-dark">
 <div class="p-3 mb-2 bg-dark text-white text-center container col-6">
     <h4>Your Balance: ${currentUser.getMoney()} PLN</h4>
+    <h4>Your Balance: <fmt:formatNumber type = "number"
+                                        maxFractionDigits = "2" value = "${currentUser.getMoney()}}"/> PLN</h4>
 </div>
 <form method="post"
            action="${pageContext.request.contextPath}/account/deposit"

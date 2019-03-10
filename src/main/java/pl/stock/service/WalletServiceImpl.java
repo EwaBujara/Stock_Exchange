@@ -11,8 +11,6 @@ import pl.stock.repository.UserRepository;
 import pl.stock.repository.WalletItemRepository;
 import pl.stock.repository.WalletRepository;
 
-import java.util.List;
-
 @Service
 public class WalletServiceImpl implements WalletService{
 
