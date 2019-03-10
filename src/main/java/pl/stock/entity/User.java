@@ -16,7 +16,7 @@ public class User {
     @Transient
     private String passwordConfirm;
 
-    private Double money;
+    private Double money=0.0;
 
     @OneToOne
     private Wallet wallet;

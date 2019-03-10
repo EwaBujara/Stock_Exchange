@@ -53,7 +53,7 @@
                 <td>${userStock.stock.price}</td>
                 <td>${userStock.quantity}</td>
                 <td>${userStock.stock.price*userStock.quantity}</td>
-                <td><a class="btn btn-dark" href="http://localhost:8080/SE/sellStock/${userStock.id}">Sell</a></td>
+                <td><a class="btn btn-dark" href="http://localhost:8080/SE/sellStock/${userStock.stock.id}">Sell</a></td>
             </tr>
 
         </c:forEach>
