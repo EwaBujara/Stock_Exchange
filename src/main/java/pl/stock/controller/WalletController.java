@@ -47,7 +47,7 @@ public class WalletController {
         return "wallet/stock";
     }
 
-    @PostMapping("buyStock/{stockId}")
+    @PostMapping("/buyStock/{stockId}")
     public String buyStock(@PathVariable Long stockId,
                            HttpSession session,
                            int quantity,
@@ -68,7 +68,7 @@ public class WalletController {
         return "wallet/stock";
     }
 
-    @PostMapping("sellStock/{stockId}")
+    @PostMapping("/sellStock/{stockId}")
     public String sellStock(@PathVariable Long stockId,
                            HttpSession session,
                            int quantity,
