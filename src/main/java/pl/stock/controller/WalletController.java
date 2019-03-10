@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.stock.entity.Stock;
 import pl.stock.entity.User;
 import pl.stock.repository.StockRepository;
+import pl.stock.repository.WalletItemRepository;
 import pl.stock.service.WalletService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,11 +26,14 @@ public class WalletController {
     @Autowired
     WalletService walletService;
 
-    @GetMapping("/wallet")
-    public String showWallet(Model model){
+    @Autowired
+    WalletItemRepository walletItemRepository;
 
+    @GetMapping("/wallet")
+    public String showWallet(Model model, HttpSession session){
+        User currentUser =(User) session.getAttribute("currentUser");
         model.addAttribute("stocks", stockRepository.findAll());
-        model.addAttribute("userStocks", stockRepository.findAll());
+        model.addAttribute("userStocks", walletItemRepository.findAllByWallet(currentUser.getWallet()));
         return "wallet/wallet";
     }
 
