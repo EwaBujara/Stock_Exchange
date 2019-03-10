@@ -29,7 +29,7 @@
             <tr>
                 <td>${stock.code}</td>
                 <td>${stock.price}</td>
-                <td><a class="btn btn-dark" href="http://localhost:8080/SE/stock/${stock.id}">Buy</a></td>
+                <td><a class="btn btn-dark" href="http://localhost:8080/SE/buyStock/${stock.id}">Buy</a></td>
             </tr>
         </c:forEach>
     </table>
@@ -53,7 +53,7 @@
                 <td>${userStock.stock.price}</td>
                 <td>${userStock.quantity}</td>
                 <td>${userStock.stock.price*userStock.quantity}</td>
-                <td><a class="btn btn-dark" href="http://localhost:8080/SE/stock/${userStock.id}">Sell</a></td>
+                <td><a class="btn btn-dark" href="http://localhost:8080/SE/sellStock/${userStock.id}">Sell</a></td>
             </tr>
 
         </c:forEach>

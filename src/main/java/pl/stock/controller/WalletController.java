@@ -38,14 +38,16 @@ public class WalletController {
     }
 
 
-    @GetMapping("/stock/{stockId}")
-    public String showDetails(@PathVariable Long stockId, Model model){
+    @GetMapping("/buyStock/{stockId}")
+    public String buyStock(@PathVariable Long stockId, Model model){
         Stock stock = stockRepository.findOne(stockId);
+        String action = "Buy!";
         model.addAttribute("stock", stock);
+        model.addAttribute("action", action);
         return "wallet/stock";
     }
 
-    @PostMapping("stock/{stockId}")
+    @PostMapping("buyStock/{stockId}")
     public String buyStock(@PathVariable Long stockId,
                            HttpSession session,
                            int quantity,
@@ -53,6 +55,27 @@ public class WalletController {
         User currentUser = (User) session.getAttribute("currentUser");
         Stock stock = stockRepository.findOne(stockId);
         walletService.buyStock(currentUser, stock, quantity);
+
+        return "redirect:"+request.getContextPath()+"/SE/wallet";
+    }
+
+    @GetMapping("/sellStock/{stockId}")
+    public String sellStock(@PathVariable Long stockId, Model model){
+        Stock stock = stockRepository.findOne(stockId);
+        String action = "Sell!";
+        model.addAttribute("stock", stock);
+        model.addAttribute("action", action);
+        return "wallet/stock";
+    }
+
+    @PostMapping("sellStock/{stockId}")
+    public String sellStock(@PathVariable Long stockId,
+                           HttpSession session,
+                           int quantity,
+                           HttpServletRequest request){
+        User currentUser = (User) session.getAttribute("currentUser");
+        Stock stock = stockRepository.findOne(stockId);
+        walletService.sellStock(currentUser, stock, quantity);
 
         return "redirect:"+request.getContextPath()+"/SE/wallet";
     }
